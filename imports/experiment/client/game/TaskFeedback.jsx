@@ -2,7 +2,7 @@ import React from "react";
 
 export default class TaskFeedback extends React.Component {
   render() {
-    const { game, stage, round, player } = this.props;
+    const { game, stage, round, player, selectedImg } = this.props;
 
     if (stage.name !== "feedback") {
       return null;
@@ -10,34 +10,37 @@ export default class TaskFeedback extends React.Component {
 
     const isIndividualReward = game.treatment["reward"] === "individual";
     const ifp = round.get("ifp");
+    let groupDesicion = false;
 
     return (
       <div className="task-feedback">
         <table>
           <tbody>
             <tr>
-              <th>Your vote</th>
+              <th>You chose: </th>
               <td>
-                {player.round.get("value") === undefined
-                  ? "-" // No response given
-                  : player.round.get("value") > 50
-                    ? "Yes"
-                    : "No"}
+                <img className="imgChoice" src={selectedImg} />
               </td>
             </tr>
             <tr>
-              <th>Group consensus</th>
-              <td>
-                {player.round.get("value") === undefined
+              <th>Your group(/You) predicted: </th>
+              <td className="textBold">
+                {player.round.get("groupVoteEmpty")
                   ? "-" // No response given
-                  : player.round.get("value") > 50
+                  : player.round.get("yesGroup")
                     ? "Yes"
                     : "No"}
+                {player.round.get("groupVoteEmpty")
+                  ? groupDesicion = !ifp.willHappen // No response given
+                  : player.round.get("yesGroup")
+                    ? groupDesicion = true
+                    : groupDesicion = false}
               </td>
             </tr>
             <tr>
-              <th>Outcome</th>
-              <td>{ifp.willHappen ? "Yes" : "No"}</td>
+              <th>Your group(/You) was(/were): </th>
+              <td className={(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correctAns" : "incorrectAns"}
+              >{(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correct" : "incorrect"}</td>
             </tr>
           </tbody>
         </table>

@@ -4,8 +4,33 @@ import moment from "moment";
 import Tweet from "./Tweet.jsx";
 
 export default class TaskStimulus extends React.Component {
+
+  handleRightButtonClick = (imgHandle) => {
+    const { hideImage } = this.props;
+    const handleRight = {
+      side: "right",
+      showLeft: false,
+      showRightAdvice: true,
+      showQuestion: false,
+      selectedImg: `https://avatars.io/twitter/${imgHandle.slice(1)}`
+    }
+    hideImage(handleRight);
+  }
+
+  handleLeftButtonClick = (imgHandle) => {
+    const { hideImage } = this.props;
+    const handleLeft = {
+      side: "left",
+      showRight: false,
+      showLeftAdvice: true,
+      showQuestion: false,
+      selectedImg: `https://avatars.io/twitter/${imgHandle.slice(1)}`
+    }
+    hideImage(handleLeft);
+  }
+
   render() {
-    const { round, stage, player } = this.props;
+    const { round, stage, player, showLeftAdvice, showRightAdvice, showLeft, showRight, showQuestion } = this.props;
 
     const ifp = round.get("ifp");
 
@@ -38,8 +63,8 @@ export default class TaskStimulus extends React.Component {
         handle={`@${globalSource.handle}`}
         author={globalSource.name}
         text={globalCue.text}
-        timestamp={moment(globalCue.datetime)}
-        likes={globalCue.likes}
+        // timestamp={moment(globalCue.datetime)}
+        // likes={globalCue.likes}
         rts={globalCue.rts}
         isGlobal
         cueSignal={globalCueSignal}
@@ -50,8 +75,8 @@ export default class TaskStimulus extends React.Component {
         handle={`@${localSource.handle}`}
         author={localSource.name}
         text={localCue.text}
-        timestamp={moment(globalCue.datetime)}
-        likes={globalCue.likes}
+        // timestamp={moment(globalCue.datetime)}
+        // likes={globalCue.likes}
         rts={globalCue.rts}
         cueSignal={localCueSignal}
       />
@@ -60,21 +85,47 @@ export default class TaskStimulus extends React.Component {
     const left = roundLeftSide === "global" ? global : local;
     const right = roundLeftSide === "global" ? local : global;
 
-    const isDebug = Meteor.isDevelopment;
+    // const isDebug = Meteor.isDevelopment;
 
     return (
       <div className="task-stimulus">
         <h1>{ifp.question}</h1>
 
-        {isDebug ? (
+        {/* {isDebug ? (
           <p className="debug center">
             Outcome: {ifp.willHappen ? "Yes" : "No"}
           </p>
-        ) : null}
+        ) : null} */}
 
-        <div className="tweets">
-          {left}
-          {right}
+        {
+          showQuestion &&
+          <div>
+            <h2>Whose advice do you want?</h2>
+          </div>
+        }
+        <div className="row center">
+          {
+            showLeft &&
+            <div className="column" onClick={() => this.handleLeftButtonClick(left.props.handle)}>
+              {left}
+            </div>
+          }
+          {
+            showRight &&
+            <div className="column" onClick={() => this.handleRightButtonClick(right.props.handle)}>
+              {right}
+            </div>
+          }
+          <p className="text">
+            {
+              showLeftAdvice &&
+              <div>{left.props.author} says:<br></br>"{left.props.text}"</div>
+            }
+            {
+              showRightAdvice &&
+              <div>{right.props.author} says:<br></br>"{right.props.text}"</div>
+            }
+          </p>
         </div>
       </div>
     );

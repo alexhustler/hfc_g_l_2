@@ -1,8 +1,8 @@
 // Configuration options
 export const roundCount = 48;
 export const willHappenCount = Math.round(0.5 * roundCount);
-export const globalInaccurateCount = Math.round(0.3 * roundCount);
-export const localInaccurateCount = Math.round(0.35 * roundCount);
+export const globalInaccurateCount = Math.round(0.25 * roundCount);
+export const localInaccurateCount = Math.round(0.30 * roundCount);
 
 // Game data
 export const data = {

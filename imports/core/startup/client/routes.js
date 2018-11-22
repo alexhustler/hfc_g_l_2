@@ -7,17 +7,22 @@ import IdentifiedRoute from "../../ui/containers/IdentifiedRoute";
 import Login from "../../ui/components/Login";
 import PublicContainer from "../../ui/containers/PublicContainer";
 
-export const renderRoutes = () => (
-  <BrowserRouter>
-    <div className="app">
-      <Switch>
-        {/* IdentifiedRoutes need to know which player the user is to play a game */}
-        <IdentifiedRoute path="/" exact component={PublicContainer} />
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
-        {/* AuthorizedRoutes need to know if the user is logged in for admin business */}
-        <AuthorizedRoute path="/admin" component={Admin} />
-        <AuthorizedRoute path="/login" component={Login} />
-      </Switch>
-    </div>
-  </BrowserRouter>
+export const renderRoutes = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <div className="app">
+        <Switch>
+          {/* IdentifiedRoutes need to know which player the user is to play a game */}
+          <IdentifiedRoute path="/" exact component={PublicContainer} />
+
+          {/* AuthorizedRoutes need to know if the user is logged in for admin business */}
+          <AuthorizedRoute path="/admin" component={Admin} />
+          <AuthorizedRoute path="/login" component={Login} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  </Provider>
 );

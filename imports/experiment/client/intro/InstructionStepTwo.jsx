@@ -46,7 +46,7 @@ export default class InstructionStepTwo extends React.Component {
             actual outcome that we obtain by fast-forwarding time in this
             fictional world (e.g. <strong>“YES”</strong> It’s raining!).
           </p>
-          <p>
+          {/* <p>
             <img
               src="/experiment/feedback.png"
               alt="Example tweets"
@@ -55,7 +55,7 @@ export default class InstructionStepTwo extends React.Component {
           </p>
           <p>
             <strong>USE THE FEEDBACK TO LEARN HOW TO MAXIMIZE YOUR SCORE</strong>
-          </p>
+          </p> */}
           <button
             type="button"
             className="pt-button pt-intent-nope pt-icon-double-chevron-left"

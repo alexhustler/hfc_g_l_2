@@ -13,8 +13,10 @@ export default class TaskResponse extends React.Component {
   };
 
   handleSubmit = event => {
+    const { hideSlider, player } = this.props;
+    hideSlider();
     event.preventDefault();
-    this.props.player.stage.submit();
+    player.stage.submit();
   };
 
   renderSubmitted() {
@@ -49,9 +51,8 @@ export default class TaskResponse extends React.Component {
   }
 
   render() {
-    const { stage, round, player, feedbackTime } = this.props;
-
-    if (stage.name !== "response") {
+    const { stage, round, player, feedbackTime, step, showSlider } = this.props;
+    if (step === "chooseSource" || !showSlider) {
       return null;
     }
 
@@ -64,7 +65,6 @@ export default class TaskResponse extends React.Component {
       <div className="task-response">
         <form onSubmit={this.handleSubmit}>
           <div className="pt-form-group">{this.renderSlider()}</div>
-
           <div className="pt-form-group">
             <button type="submit" className="pt-button pt-icon-tick pt-large">
               Submit

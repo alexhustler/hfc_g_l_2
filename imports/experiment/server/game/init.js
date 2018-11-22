@@ -33,7 +33,7 @@ export const init = (treatment, players) => {
   // happen)."
   const willHappenIndices = _.shuffle(indices).slice(0, willHappenCount);
 
-  // "Select 30% of IFPs and invert the S of the Global cue (if -1 then take +1
+  // "Select 25% of IFPs and invert the S of the Global cue (if -1 then take +1
   // and viceversa) S(G)=-T"
   const globalInaccurates = _.shuffle(indices).slice(0, globalInaccurateCount);
 
@@ -75,13 +75,13 @@ export const init = (treatment, players) => {
       {
         name: "feedback",
         displayName: "Feedback",
-        durationInSeconds: 20
-      },
-      {
-        name: "question",
-        displayName: "Question",
         durationInSeconds: 10
-      }
+      },
+      // {
+      //   name: "question",
+      //   displayName: "Question",
+      //   durationInSeconds: 10
+      // }
     ];
 
     rounds.push({
@@ -145,7 +145,7 @@ export const init = (treatment, players) => {
     });
     player.set("roundLeftSide", roundLeftSide);
 
-    // "For each player: select a random subset of 35% of IFPs and switch S.
+    // "For each player: select a random subset of 30% of IFPs and switch S.
     // S_i(L)=-T for every player i"
     const localInacc = _.shuffle(indices).slice(0, localInaccurateCount);
     const roundLocalAccurate = [];

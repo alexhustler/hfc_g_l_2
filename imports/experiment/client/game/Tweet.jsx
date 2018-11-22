@@ -31,7 +31,7 @@ export default class Tweet extends React.Component {
 
     return (
       <div
-        className="Tweeeeet SandboxRoot env-bp-350"
+        className="Avatar"
         onClick={e => e.preventDefault()}
       >
         <div className="EmbeddedTweet EmbeddedTweet--edge js-clickToOpenTarget tweet-InformationCircle-widgetParent">
@@ -45,7 +45,7 @@ export default class Tweet extends React.Component {
                   <img className="Avatar Avatar--edge" src={imgsrc} />
                 </a>
 
-                <div className="TweetAuthor js-inViewportScribingTarget">
+                {/* <div className="TweetAuthor js-inViewportScribingTarget">
                   <a className="TweetAuthor-link Identity u-linkBlend" href="#">
                     <div className="TweetAuthor-nameScreenNameContainer">
                       <span className="TweetAuthor-decoratedName">
@@ -67,17 +67,17 @@ export default class Tweet extends React.Component {
                       </span>
                     </div>
                   </a>
-                </div>
+                </div> */}
 
-                <div className="Tweet-brand">
+                {/* <div className="Tweet-brand">
                   <a href="#">
                     <span className="FollowButton-bird">
                       <div className="Icon Icon--twitter " />
                     </span>
                   </a>
-                </div>
+                </div> */}
               </div>
-              <div className="Tweet-body e-entry-content">
+              {/* <div className="Tweet-body e-entry-content">
                 <div className="u-hiddenVisually js-inViewportScribingTarget" />
                 <p className="Tweet-text e-entry-title" lang="en" dir="ltr">
                   {text}
@@ -126,16 +126,16 @@ export default class Tweet extends React.Component {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </blockquote>
           </div>
         </div>
 
-        {isDebug ? (
+        {/* {isDebug ? (
           <p className="debug center">
             {isGlobal ? "GLOBAL" : "LOCAL"} / {cueSignal.toUpperCase()}
           </p>
-        ) : null}
+        ) : null} */}
       </div>
     );
   }

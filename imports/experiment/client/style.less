@@ -133,8 +133,33 @@
       text-align: center;
       line-height: 1.2em;
     }
+    h2 {
+      text-align: center;
+    }
     .tweets {
       display: flex;
+    }
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 40px;
+    }
+
+    /* Clear floats after image containers */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .text {
+      padding: 30px;
     }
   }
 
@@ -168,6 +193,21 @@
         padding-right: 4rem;
         font-weight: 300;
       }
+    }
+    .correctAns{
+      font-weight:bold; 
+      color: rgb(23, 247, 23);
+    }
+    .incorrectAns{
+      font-weight:bold;
+      color: red;
+    }
+    .textBold{
+      font-weight:bold; 
+    }
+    img.imgChoice{
+      height: 50px;
+      width: 50px;
     }
   }
 }
