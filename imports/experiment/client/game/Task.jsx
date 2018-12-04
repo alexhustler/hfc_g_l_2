@@ -14,7 +14,7 @@ class Task extends React.Component {
   static getDerivedStateFromProps(props, state) {
     const { resetRound } = props;
     if (props.round._id !== state.roundId && props.stage.name === "response") {
-      // reset the state when a new round begains
+      // reset the state when a new round begins
       resetRound();
       return {
         roundId: props.round._id
@@ -24,7 +24,7 @@ class Task extends React.Component {
   }
 
   render() {
-    const { game, round, stage, player, hideImage, hideSlider, resetRound } = this.props;
+    const { game, round, stage, player, hideImage, hideSlider } = this.props;
     const { step, showLeft, showRight, showLeftAdvice, showRightAdvice,
       showQuestion, showSlider, selectedImg } = this.props.responseState;
 

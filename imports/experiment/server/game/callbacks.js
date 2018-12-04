@@ -67,6 +67,7 @@ export default {
       player.round.set("groupCorrect", groupCorrect);
       player.round.set("groupVoteEmpty", groupVoteEmpty);
       player.round.set("yesGroup", yesGroup);
+      player.round.set("playersNumber", players.length);
       if (!isIndividualReward && groupCorrect) {
         const prevScore = player.get("score");
         player.set("score", prevScore + 1);

@@ -6,7 +6,11 @@ import Tweet from "./Tweet.jsx";
 export default class TaskStimulus extends React.Component {
 
   handleRightButtonClick = (imgHandle) => {
-    const { hideImage } = this.props;
+    const { stage, hideImage } = this.props;
+    if(stage.name === "feedback")
+    {
+      return null;
+    }
     const handleRight = {
       side: "right",
       showLeft: false,
@@ -18,7 +22,11 @@ export default class TaskStimulus extends React.Component {
   }
 
   handleLeftButtonClick = (imgHandle) => {
-    const { hideImage } = this.props;
+    const { stage, hideImage } = this.props;
+    if(stage.name === "feedback")
+    {
+      return null;
+    }
     const handleLeft = {
       side: "left",
       showRight: false,

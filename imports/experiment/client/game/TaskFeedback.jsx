@@ -18,12 +18,12 @@ export default class TaskFeedback extends React.Component {
           <tbody>
             <tr>
               <th>You chose: </th>
-              <td>
-                <img className="imgChoice" src={selectedImg} />
+              <td className="textBold">
+                {selectedImg !== null ? <img className="imgChoice" src={selectedImg} /> : "-"}
               </td>
             </tr>
             <tr>
-              <th>Your group(/You) predicted: </th>
+              <th>{player.round.get("playersNumber") == 1 ? "You" : "Your group"} predicted: </th>
               <td className="textBold">
                 {player.round.get("groupVoteEmpty")
                   ? "-" // No response given
@@ -38,7 +38,7 @@ export default class TaskFeedback extends React.Component {
               </td>
             </tr>
             <tr>
-              <th>Your group(/You) was(/were): </th>
+              <th>{player.round.get("playersNumber") == 1 ? "You" : "Your group"} were: </th>
               <td className={(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correctAns" : "incorrectAns"}
               >{(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correct" : "incorrect"}</td>
             </tr>

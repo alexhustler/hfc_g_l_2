@@ -67,6 +67,11 @@ export const init = (treatment, players) => {
   const rounds = [];
   _.times(roundCount, i => {
     const stages = [
+      // {
+      //   name: "advice",
+      //   displayName: "Advice",
+      //   durationInSeconds: 5
+      // },
       {
         name: "response",
         displayName: "Response",

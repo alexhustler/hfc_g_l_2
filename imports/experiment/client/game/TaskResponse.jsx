@@ -52,7 +52,7 @@ export default class TaskResponse extends React.Component {
 
   render() {
     const { stage, round, player, feedbackTime, step, showSlider } = this.props;
-    if (step === "chooseSource" || !showSlider) {
+    if (step === "chooseSource" || !showSlider || stage.name === "feedback") {
       return null;
     }
 
