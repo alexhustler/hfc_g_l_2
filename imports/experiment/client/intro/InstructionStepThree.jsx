@@ -8,15 +8,26 @@ export default class InstructionStepThree extends React.Component {
     return (
       <Centered>
         <div className="instructions">
-          <h1> Instructions (continued 2) </h1>
+          <h1> Instructions (continued 3) </h1>
           <p>
-            Although the questions that you will see are realistic - often
-            involving known people and countries - please remember that this is
-            a <strong>fictional</strong> world! Try not to use your prior
-            knowledge on the topic but only the information provided by the
-            fictional news agencies.
+            <img
+              src="/experiment/slider.png"
+              alt="Example tweets"
+              width="400"
+            />
           </p>
+          <p>Rules:</p>
+          <ul>
+            <li>If you are unsure, please bring the slider closer to middle (50-50).</li>
+            <li>If you are confident that the event WILL happen, bring the slider to 100%.</li>
+            <li>If you are confident that the event will NOT happen, bring the slider to 0%.</li>
+            <li>Responding 50-50 is not allowed.</li>
+          </ul>
           <p>
+          <u>Please sincerely express your confidence.</u> We will give an extra bonus to the most calibrated Agent. 
+          Calibration means that you were neither overconfident or underconfident, but just right!
+          </p>
+          {/* <p>
             Please try to be both <strong>accurate</strong> and{" "}
             <strong>calibrated</strong>:
             <ul>
@@ -81,8 +92,8 @@ export default class InstructionStepThree extends React.Component {
                 </li>
               </ul>
             </>
-          )}
-          <p>Ready? Let’s start!</p>
+          )} */}
+          
           <button
             type="button"
             className="pt-button pt-intent-nope pt-icon-double-chevron-left"

@@ -13,8 +13,7 @@ export default class TaskResponse extends React.Component {
   };
 
   handleSubmit = event => {
-    const { hideSlider, player } = this.props;
-    hideSlider();
+    const { player } = this.props;
     event.preventDefault();
     player.stage.submit();
   };
@@ -36,6 +35,15 @@ export default class TaskResponse extends React.Component {
 
     return (
       <div className={`pt-form-content ${value === undefined ? "empty" : ""}`}>
+        <div className="sliderTags">
+          <div>
+            <div>"WILL NOT HAPPEN"</div>
+          </div>
+          <div>"UNSURE"</div>
+          <div className="sliderTag">
+            <div>"WILL HAPPEN"</div>
+          </div>
+        </div>
         <Slider
           min={0}
           max={100}
@@ -51,8 +59,8 @@ export default class TaskResponse extends React.Component {
   }
 
   render() {
-    const { stage, round, player, feedbackTime, step, showSlider } = this.props;
-    if (step === "chooseSource" || !showSlider || stage.name === "feedback") {
+    const { stage, round, player, feedbackTime, step } = this.props;
+    if (step === "chooseSource" || stage.name === "feedback") {
       return null;
     }
 

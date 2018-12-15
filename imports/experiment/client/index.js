@@ -6,6 +6,7 @@ import InstructionStepFour from "./intro/InstructionStepFour.jsx";
 import InstructionStepOne from "./intro/InstructionStepOne.jsx";
 import InstructionStepThree from "./intro/InstructionStepThree.jsx";
 import InstructionStepTwo from "./intro/InstructionStepTwo.jsx";
+import InstructionStepFive from "./intro/InstructionStepFive.jsx";
 import Round from "./game/Round.jsx";
 import Thanks from "./outro/Thanks.jsx";
 import Sorry from "./outro/Sorry.jsx";
@@ -22,7 +23,8 @@ export const config = {
       InstructionStepOne,
       InstructionStepTwo,
       InstructionStepThree,
-      InstructionStepFour
+      InstructionStepFour,
+      InstructionStepFive
     ];
   },
 

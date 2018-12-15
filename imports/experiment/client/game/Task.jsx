@@ -1,42 +1,44 @@
 import React from "react";
 
 import TaskFeedback from "./TaskFeedback.jsx";
-import TaskQuestion from "./TaskQuestion.jsx";
+// import TaskQuestion from "./TaskQuestion.jsx";
 import TaskResponse from "./TaskResponse";
 import TaskStimulus from "./TaskStimulus";
 
 import { connect } from "react-redux";
-import { hideImage, hideSlider, resetRound } from "../../../core/startup/client/redux/actions/statesActions";
+import { hideImage, resetRound } from "../../../core/startup/client/redux/actions/statesActions";
 
 class Task extends React.Component {
-  state = { roundId: null };
+  // state = { roundId: props.responseState.roundIndex };
 
-  static getDerivedStateFromProps(props, state) {
-    const { resetRound } = props;
-    if (props.round._id !== state.roundId && props.stage.name === "response") {
+  static getDerivedStateFromProps(props) {
+    const { resetRound, round } = props;
+    const { roundIndex } = props.responseState;
+    
+    if (round.index !== roundIndex) {
+      // console.log("I'm reseting.", round.index, roundIndex);
       // reset the state when a new round begins
       resetRound();
       return {
-        roundId: props.round._id
+        roundIndex: round.index
       };
     }
+    // console.log("I'm not reseting.", round.index, roundIndex);
     return null;
   }
 
   render() {
-    const { game, round, stage, player, hideImage, hideSlider } = this.props;
+    const { game, round, stage, player, hideImage } = this.props;
     const { step, showLeft, showRight, showLeftAdvice, showRightAdvice,
-      showQuestion, showSlider, selectedImg } = this.props.responseState;
+      showQuestion, selectedImg, roundIndex } = this.props.responseState;
 
     return (
       <div className="task">
         <TaskStimulus round={round} stage={stage} player={player} showQuestion={showQuestion}
           showLeft={showLeft} showRight={showRight} showLeftAdvice={showLeftAdvice}
-          showRightAdvice={showRightAdvice}
-          hideImage={hideImage}
+          showRightAdvice={showRightAdvice} hideImage={hideImage} roundIndex={roundIndex}
         />
-        <TaskResponse round={round} stage={stage} player={player} game={game} step={step}
-          showSlider={showSlider} hideSlider={hideSlider} />
+        <TaskResponse round={round} stage={stage} player={player} game={game} step={step} />
         {/* <TaskQuestion round={round} stage={stage} player={player} game={game} /> */}
         <TaskFeedback
           game={game}
@@ -54,4 +56,4 @@ const mapStateToProps = state => ({
   responseState: state.responseState
 })
 
-export default connect(mapStateToProps, { hideImage, hideSlider, resetRound })(Task);
+export default connect(mapStateToProps, { hideImage, resetRound })(Task);

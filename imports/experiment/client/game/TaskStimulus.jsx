@@ -6,7 +6,7 @@ import Tweet from "./Tweet.jsx";
 export default class TaskStimulus extends React.Component {
 
   handleRightButtonClick = (imgHandle) => {
-    const { stage, hideImage } = this.props;
+    const { stage, hideImage, round } = this.props;
     if(stage.name === "feedback")
     {
       return null;
@@ -16,13 +16,14 @@ export default class TaskStimulus extends React.Component {
       showLeft: false,
       showRightAdvice: true,
       showQuestion: false,
-      selectedImg: `https://avatars.io/twitter/${imgHandle.slice(1)}`
+      selectedImg: `https://avatars.io/twitter/${imgHandle.slice(1)}`,
+      roundIndex: round.index
     }
     hideImage(handleRight);
   }
 
   handleLeftButtonClick = (imgHandle) => {
-    const { stage, hideImage } = this.props;
+    const { stage, hideImage, round } = this.props;
     if(stage.name === "feedback")
     {
       return null;
@@ -32,7 +33,8 @@ export default class TaskStimulus extends React.Component {
       showRight: false,
       showLeftAdvice: true,
       showQuestion: false,
-      selectedImg: `https://avatars.io/twitter/${imgHandle.slice(1)}`
+      selectedImg: `https://avatars.io/twitter/${imgHandle.slice(1)}`,
+      roundIndex: round.index
     }
     hideImage(handleLeft);
   }
@@ -55,6 +57,8 @@ export default class TaskStimulus extends React.Component {
       globalCueSignal = !ifp.willHappen ? "pro" : "against";
     }
     // const globalCue = ifp.chosen[globalCueSignal];
+    console.log({globalCueSignal}, {roundSignals});
+    
     const globalCue =
       ifp[globalCueSignal][roundSignals.global[globalCueSignal]];
 
@@ -124,16 +128,16 @@ export default class TaskStimulus extends React.Component {
               {right}
             </div>
           }
-          <p className="text">
+          <div className="text">
             {
               showLeftAdvice &&
-              <div>{left.props.author} says:<br></br>"{left.props.text}"</div>
+              <div>{left.props.author} says:<br></br>"{left.props.text}."</div>
             }
             {
               showRightAdvice &&
-              <div>{right.props.author} says:<br></br>"{right.props.text}"</div>
+              <div>{right.props.author} says:<br></br>"{right.props.text}."</div>
             }
-          </p>
+          </div>
         </div>
       </div>
     );

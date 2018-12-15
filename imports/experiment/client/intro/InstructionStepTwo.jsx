@@ -4,48 +4,98 @@ import Centered from "../../../core/ui/components/Centered.jsx";
 
 export default class InstructionStepTwo extends React.Component {
   render() {
-    const { hasPrev, hasNext, onNext, onPrev } = this.props;
+    const { treatment, hasPrev, hasNext, onNext, onPrev } = this.props;
     return (
       <Centered>
         <div className="instructions">
-          <h1> Instructions (continued) </h1>
-          <p>
+        <h1> Instructions (continued 2) </h1>
+          <h1> For example, </h1>
+          {treatment.reward === "group" ? (
+            <>
+              <ol>
+                <li>Question: “Will it rain tomorrow?”</li>
+                <li>Click on one of two available news agencies:</li>
+                  <p>
+                    <img
+                      src="/experiment/example-tweets.png"
+                      alt="Example tweets"
+                      width="700"
+                    />
+                  </p>
+                <li>Read the chosen agency’s opinion:</li>
+                  <p>
+                    <img
+                      src="/experiment/agency-opinion.png"
+                      alt="Example tweets"
+                      width="100"
+                    />
+                    The X-pert says: <strong>YES</strong>.
+                  </p>
+                <li>Rate the chances of rain on a scale from 0% (“It definitely will not.”) to 100% (“It definitely will.”).</li>
+                  <p>
+                    <img
+                      src="/experiment/slider.png"
+                      alt="Example tweets"
+                      width="400"
+                    />
+                  </p>
+                <li>If your individual prediction is correct, collect your reward!</li>
+              </ol>
+              <p>
+                Notice that although you are arriving as a group, 
+                you will be making your predictions independently of the others. 
+                However, we will show you the most popular prediction among your team as well as your own prediction.
+              </p>
+            </>
+          ) : (
+            <>
+              <ol>
+                <li>Question: “Will it rain tomorrow?”</li>
+                <li>Click on one of two available news agencies:</li>
+                  <p>
+                    <img
+                      src="/experiment/example-tweets.png"
+                      alt="Example tweets"
+                      width="700"
+                    />
+                  </p>
+                <li>Read the chosen agency’s opinion:</li>
+                  <p>
+                    <img
+                      src="/experiment/agency-opinion.png"
+                      alt="Example tweets"
+                      width="100"
+                    />
+                    The X-pert says: <strong>YES</strong>.
+                  </p>
+                <li>Rate the chances of rain on a scale from 0% (“It definitely will not.”) to 100% (“It definitely will.”).</li>
+                  <p>
+                    <img
+                      src="/experiment/slider.png"
+                      alt="Example tweets"
+                      width="400"
+                    />
+                  </p>
+                <li>If your team’s collective prediction is correct, collect your reward!</li>
+              </ol>
+              <p>
+                Notice that you will express your personal prediction, 
+                but your reward will depend on the team collective prediction, 
+                which will be made by majority rule and may be different from your own prediction.
+              </p>
+            </>
+          )}
+          {/* <p>
             You are now asked to rate the chances that it will rain tomorrow on
             a scale from 0% (“It definitely will not.”) to 100% (“It definitely
             will.”).
-          </p>
-          <p>
-            <img
-              src="/experiment/slider.png"
-              alt="Example tweets"
-              width="400"
-            />
-          </p>
-          <p>Rules:</p>
-          <ul>
-            <li>Expressing a 50-50 chance is not allowed.</li>
-            <li>
-              If you are unsure, please bring the slider closer to the middle
-              (but not 50-50!).
-            </li>
-            <li>
-              If you are confident that the event in question will <strong>NOT happen</strong>,
-              bring the slider to 0%.
-            </li>
-            <li>
-              If on the contrary you are confident that it <strong>WILL happen</strong>, bring
-              the slider to 100%.
-            </li>
-            <li>
-              Any other response in between is also allowed (but not 50-50!).
-            </li>
-          </ul>
-          <p>
+          </p> */}
+          {/* <p>
             After entering your response, we will take the outcome that you
             think it’s most likely (e.g. <strong>“YES”</strong> it will rain) and compare it to the
             actual outcome that we obtain by fast-forwarding time in this
             fictional world (e.g. <strong>“YES”</strong> It’s raining!).
-          </p>
+          </p> */}
           {/* <p>
             <img
               src="/experiment/feedback.png"

@@ -9,26 +9,31 @@ export default class InstructionStepOne extends React.Component {
       <Centered>
         <div className="instructions">
           <h1> Instructions </h1>
-          <p>Hi!</p>
-          <p>
-            And thank you for participating in this experiment. In the following
-            hour, we will bring you to a fictional world that looks very similar
-            to ours.
-          </p>
-          <p>
-            You will see a series of statements - presented as tweets - made by
-            fictional news agencies regarding realistic events of global
-            relevance. After having read the information provided, you will be
-            asked to rate on a scale from 0% to 100% the probability that a
-            certain event will happen. For example, if the question is “Will it
-            rain tomorrow in NYC?”, you could see the following two tweets:
-          </p>
           <p>
             <img
-              src="/experiment/example-tweets.png"
-              alt="Example tweets"
-              width="700"
+              src="/experiment/welcome-screen1.png"
+              // alt="Example tweets"
+              width="200"
             />
+          </p>
+          <p>Welcome Special Agent!</p>
+          <p>
+          And thank you for participating in this mission. In the following hour, 
+          you and your team will be transported to another planet, called Mecha-T. 
+          There, you will be asked to be neutral observers of the planet’s political situation.
+          </p>
+          <p>
+          We will ask you to forecast future Mecha-T’s geo-political events - like wars, 
+          elections and migrations - based on information collected from Mecha-T’s news agencies. 
+          </p>
+          <p>
+            For each forecast “Will the event Z happen?”:
+            <ul>
+              <li>Choose one of two available news agencies.</li>
+              <li>Read what the selected news has to say about the event Z.</li>
+              <li>Rate on a scale from 0% to 100% the probability that Z will happen.</li>
+              <li>Maximize your tokens (they will be converted into real money at the end).</li>
+            </ul> 
           </p>
           <button
             type="button"

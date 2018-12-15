@@ -74,6 +74,21 @@
     display: flex;
     align-items: flex-start;
   }
+
+  .progress-bar {
+    position: relative;
+    height: 20px;
+    width: 350px;
+    border-radius: 50px;
+    border: 1px solid #333;
+  }
+  
+  .filler {
+    background: #1DA598;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .2s ease-in;
+  }
 }
 
 .social-exposure {
@@ -156,10 +171,12 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 50%;
+      width: 40%;
     }
     .text {
-      padding: 30px;
+      padding-top: 55px;
+      padding-bottom: 50px;
+      font-size: 22px;
     }
   }
 
@@ -179,6 +196,16 @@
       .pt-slider-handle {
         visibility: hidden;
       }
+    }
+    
+    .sliderTags {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .sliderTag {
+      text-align: right;
     }
   }
 

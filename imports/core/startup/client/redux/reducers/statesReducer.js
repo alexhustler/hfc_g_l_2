@@ -7,7 +7,8 @@ const initailState = {
     showLeftAdvice: false,
     showRightAdvice: false,
     showQuestion: true,
-    showSlider: true,
+    submitted: false,
+    roundIndex: 0,
     selectedImg: null
 }
 
@@ -21,7 +22,8 @@ export default function (state = initailState, action) {
                     showRight: false,
                     showQuestion: false,
                     step: "chooseAnswer",
-                    selectedImg: action.payload.selectedImg
+                    selectedImg: action.payload.selectedImg,
+                    roundIndex: action.payload.roundIndex
                 }
             }
             return {
@@ -30,13 +32,14 @@ export default function (state = initailState, action) {
                 showLeft: false,
                 showQuestion: false,
                 step: "chooseAnswer",
-                selectedImg: action.payload.selectedImg
+                selectedImg: action.payload.selectedImg,
+                roundIndex: action.payload.roundIndex
             }
-        case HIDE_SLIDER:
-            return {
-                ...state,
-                showSlider: false,
-            }
+        // case HIDE_SLIDER:
+        //     return {
+        //         ...state,
+        //         submitted: true,
+        //     }
         case RESET_ROUND:
             return initailState
         default:

@@ -7,12 +7,12 @@ export const hideImage = (imgChoice) => dispatch => {
       payload: imgChoice
   })
 }
-export const hideSlider = () => dispatch => {
+// export const hideSlider = () => dispatch => {
     
-  dispatch({
-      type: HIDE_SLIDER,
-  })
-}
+//   dispatch({
+//       type: HIDE_SLIDER,
+//   })
+// }
 export const resetRound = () => dispatch => {
     
   dispatch({

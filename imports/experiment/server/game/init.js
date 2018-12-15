@@ -100,6 +100,7 @@ export const init = (treatment, players) => {
     player.set("avatar", `/avatars/jdenticon/${player._id}`);
     // Start with a 0 score
     player.set("score", 0);
+    player.set("roundsCount", roundCount);
 
     // Make source assignments: "For each player: randomly allocate one Source
     // to one Cue type. I.e. for some players source X will be Global and Y will
