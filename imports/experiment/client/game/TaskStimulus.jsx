@@ -57,7 +57,7 @@ export default class TaskStimulus extends React.Component {
       globalCueSignal = !ifp.willHappen ? "pro" : "against";
     }
     // const globalCue = ifp.chosen[globalCueSignal];
-    console.log({globalCueSignal}, {roundSignals});
+    // console.log({globalCueSignal}, {roundSignals});
     
     const globalCue =
       ifp[globalCueSignal][roundSignals.global[globalCueSignal]];

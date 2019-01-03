@@ -36,12 +36,12 @@ export default class TaskResponse extends React.Component {
     return (
       <div className={`pt-form-content ${value === undefined ? "empty" : ""}`}>
         <div className="sliderTags">
-          <div>
-            <div>"WILL NOT HAPPEN"</div>
+          <div className="sliderTagNo">
+            <div>"Definitely NO"</div>
           </div>
           <div>"UNSURE"</div>
-          <div className="sliderTag">
-            <div>"WILL HAPPEN"</div>
+          <div className="sliderTagYes">
+            <div>"Definitely YES"</div>
           </div>
         </div>
         <Slider
@@ -74,9 +74,9 @@ export default class TaskResponse extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="pt-form-group">{this.renderSlider()}</div>
           <div className="pt-form-group">
-            <button type="submit" className="pt-button pt-icon-tick pt-large">
+            { (player.round.get("value") || player.round.get("value") === 0) && <button type="submit" className="pt-button pt-icon-tick pt-large">
               Submit
-            </button>
+            </button> }
           </div>
         </form>
       </div>

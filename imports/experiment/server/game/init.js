@@ -75,12 +75,12 @@ export const init = (treatment, players) => {
       {
         name: "response",
         displayName: "Response",
-        durationInSeconds: 30
+        durationInSeconds: 15
       },
       {
         name: "feedback",
         displayName: "Feedback",
-        durationInSeconds: 10
+        durationInSeconds: 5
       },
       // {
       //   name: "question",

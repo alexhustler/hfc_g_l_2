@@ -89,10 +89,10 @@ export const data = {
       name: "Bainbridge Post-Searchlight",
       handle: "postsearchlight"
     },
-    {
-      name: "Riley Countian",
-      handle: "rileycountian"
-    }
+    // {
+    //   name: "Riley Countian",
+    //   handle: "rileycountian"
+    // }
   ],
   ifps : generatedIfps,
   // ifps : [

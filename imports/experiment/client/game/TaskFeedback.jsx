@@ -38,7 +38,7 @@ export default class TaskFeedback extends React.Component {
               </td>
             </tr>
             <tr>
-              <th>{player.round.get("playersNumber") == 1 ? "You" : "Your group"} were: </th>
+              <th>{isIndividualReward ? "You were: " : "Your group was: "} </th>
               <td className={(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correctAns" : "incorrectAns"}
               >{(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correct" : "incorrect"}</td>
             </tr>

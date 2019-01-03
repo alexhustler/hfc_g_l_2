@@ -34,7 +34,7 @@ export default {
       const value = player.round.get("value");
 
       // If no response given, ignore rewarding, always wrong.
-      if (!value) {
+      if (!value && value !== 0) {
         return;
       }
       votedCount++;

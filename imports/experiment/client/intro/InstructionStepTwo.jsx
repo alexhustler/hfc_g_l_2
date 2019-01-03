@@ -10,7 +10,7 @@ export default class InstructionStepTwo extends React.Component {
         <div className="instructions">
         <h1> Instructions (continued 2) </h1>
           <h1> For example, </h1>
-          {treatment.reward === "group" ? (
+          {treatment.reward !== "group" ? (
             <>
               <ol>
                 <li>Question: “Will it rain tomorrow?”</li>

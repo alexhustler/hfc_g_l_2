@@ -104,6 +104,58 @@ const resources = {
       "Argam",
       "Niage Queeeast"
     ],
+    cities: [
+      "Plirrough",
+      "Gammouth",
+      "Shetin",
+      "Zlowood",
+      "Wraccester",
+      "Avrolk",
+      "Teigh",
+      "Dares",
+      "Eimver",
+      "Atheset",
+      "Vrutol",
+      "Ufliton",
+      "Yoburgh",
+      "Trehdale",
+      "Zuowood",
+      "Gans",
+      "Chard",
+      "Wey",
+      "Aloby",
+      "Oitnard",
+      "Fenginia",
+      "Cruinbury",
+      "Uchusey",
+      "Shagow",
+      "Budgan",
+      "Vloni",
+      "Frine",
+      "Ylesa",
+      "Ontgan",
+      "Ensnard",
+      "Lebridge",
+      "Croidford",
+      "Shuonmouth",
+      "Mibert",
+      "Paving",
+      "Dreigh",
+      "Cesa",
+      "Trans",
+      "Ilaville",
+      "Anepus",
+      "Bovine",
+      "Crorgan",
+      "Yhiaphis",
+      "Fiwood",
+      "Volrora",
+      "Wrolis",
+      "Sose",
+      "Zrurg",
+      "Olntin",
+      "Ertonron"
+    ],
     persons: [
       "Manal Carter",
       "Lylah Hutchings",
@@ -462,7 +514,7 @@ const resources = {
 
 function generateIfp(country1, country2, country3, 
   country4, person1, person2, party1, party2, 
-  virus1, group1, region1, agency1, agency2, index) {
+  virus1, group1, region1, agency1, agency2, city1, index) {
     let genericIfps = [
       {
         question:
@@ -490,11 +542,11 @@ function generateIfp(country1, country2, country3,
       },
       {
         question:
-          "Will " + country1 + "'s Supreme Leader PERSON experience a significant leadership disruption before 1 July 2019?"
+          "Will " + country1 + "'s Supreme Leader " + person1 + " experience a significant leadership disruption before 1 July 2019?"
       },
       {
         question:
-          "Will " + country1 + "'s President PERSON experience a significant leadership disruption before 1 September 2019?"
+          "Will " + country1 + "'s President " + person1 + " experience a significant leadership disruption before 1 September 2019?"
       },
       {
         question:
@@ -502,11 +554,11 @@ function generateIfp(country1, country2, country3,
       },
       {
         question:
-          "Will " + country1 + " forces take REGION before 8 September 2019?"
+          "Will " + country1 + " forces take " + region1 + " before 8 September 2019?"
       },
       {
         question:
-          "Before 8 September 2019, will " + country1 + " announce that it is ending the blockade of COUNTRY's CITY port?"
+          "Before 8 September 2019, will " + country1 + " announce that it is ending the blockade of COUNTRY's " + city1 + " port?"
       },
       {
         question:
@@ -692,6 +744,7 @@ let group1 = "";
 let region1 = "";
 let agency1 = "";
 let agency2 = "";
+let city1 = "";
 
 let genericIfps = [
   {
@@ -732,11 +785,11 @@ let genericIfps = [
   },
   {
     question:
-      "Will " + country1 + " forces take REGION before 8 September 2019?"
+      "Will " + country1 + " forces take " + region1 + " before 8 September 2019?"
   },
   {
     question:
-      "Before 8 September 2019, will " + country1 + " announce that it is ending the blockade of COUNTRY's CITY port?"
+      "Before 8 September 2019, will " + country1 + " announce that it is ending the blockade of COUNTRY's " + city1 + " port?"
   },
   {
     question:
@@ -915,6 +968,7 @@ for (let i = 0; i < genericIfps.length; i++) {
   let regions = _.shuffle(resources.regions);
   let countries = _.shuffle(resources.countries);
   let agencies = _.shuffle(resources.agencies);
+  let cities = _.shuffle(resources.cities);
 
   country1 = countries[0];
   country2 = countries[1];
@@ -929,10 +983,11 @@ for (let i = 0; i < genericIfps.length; i++) {
   region1 = regions[0];
   agency1 = agencies[0];
   agency2 = agencies[1];
+  city1 = cities[0];
 
   let clonedifp = { question : generateIfp(country1, country2, country3, 
     country4, person1, person2, party1, party2, 
-    virus1, group1, region1, agency1, agency2, i),
+    virus1, group1, region1, agency1, agency2, city1, i),
     pro: [
       {
         text:
