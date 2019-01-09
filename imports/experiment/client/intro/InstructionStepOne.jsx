@@ -27,11 +27,11 @@ export default class InstructionStepOne extends React.Component {
           elections and migrations - based on information collected from Mecha-T’s news agencies. 
           </p>
           <p>
-            For each forecast “Will the event Z happen?”:
+            For each forecast:
             <ul>
               <li>Choose one of two available news agencies.</li>
-              <li>Read what the selected news has to say about the event Z.</li>
-              <li>Rate on a scale from 0% to 100% the probability that Z will happen.</li>
+              <li>Read what the selected news has to say about the event in question.</li>
+              <li>Rate on a scale from 0% to 100% the probability that the event will happen.</li>
               <li>Maximize your tokens (they will be converted into real money at the end).</li>
             </ul> 
           </p>

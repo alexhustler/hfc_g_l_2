@@ -8,109 +8,127 @@ export default class InstructionStepThree extends React.Component {
     return (
       <Centered>
         <div className="instructions">
-          <h1> Instructions (continued 3) </h1>
-          <p>
+        <h1> Instructions (continued 3) </h1>
+            <p>
+              <img
+                src="/experiment/instr2.png"
+                alt="Example tweets"
+                width="700"
+              />
+            </p>
+          {/* {treatment.reward !== "group" ? (
+            <>
+              <ol>
+                <li>If the forecast is “Will it rain tomorrow?”, you might see something like this:</li>
+                <li>Click on one of two available news agencies:</li>
+                  <p>
+                    <img
+                      src="/experiment/instr1.png"
+                      alt="Example tweets"
+                      width="700"
+                    />
+                  </p>
+                <li>Read the chosen agency’s opinion:</li>
+                  <p>
+                    <img
+                      src="/experiment/agency-opinion.png"
+                      alt="Example tweets"
+                      width="100"
+                    />
+                    The X-pert says: <strong>YES</strong>.
+                  </p>
+                <li>Rate the chances of rain on a scale from 0% (“It definitely will not.”) to 100% (“It definitely will.”).</li>
+                  <p>
+                    <img
+                      src="/experiment/slider.png"
+                      alt="Example tweets"
+                      width="400"
+                    />
+                  </p>
+                <li>If your individual prediction is correct, collect your reward!</li>
+              </ol>
+              <p>
+                Notice that although you are arriving as a group, 
+                you will be making your predictions independently of the others. 
+                However, we will show you the most popular prediction among your team as well as your own prediction.
+              </p>
+            </>
+          ) : (
+            <>
+              <ol>
+                <li>Question: “Will it rain tomorrow?”</li>
+                <li>Click on one of two available news agencies:</li>
+                  <p>
+                    <img
+                      src="/experiment/example-tweets.png"
+                      alt="Example tweets"
+                      width="700"
+                    />
+                  </p>
+                <li>Read the chosen agency’s opinion:</li>
+                  <p>
+                    <img
+                      src="/experiment/agency-opinion.png"
+                      alt="Example tweets"
+                      width="100"
+                    />
+                    The X-pert says: <strong>YES</strong>.
+                  </p>
+                <li>Rate the chances of rain on a scale from 0% (“It definitely will not.”) to 100% (“It definitely will.”).</li>
+                  <p>
+                    <img
+                      src="/experiment/slider.png"
+                      alt="Example tweets"
+                      width="400"
+                    />
+                  </p>
+                <li>If your team’s collective prediction is correct, collect your reward!</li>
+              </ol>
+              <p>
+                Notice that you will express your personal prediction, 
+                but your reward will depend on the team collective prediction, 
+                which will be made by majority rule and may be different from your own prediction.
+              </p>
+            </>
+          )}
+          {/* <p>
+            You are now asked to rate the chances that it will rain tomorrow on
+            a scale from 0% (“It definitely will not.”) to 100% (“It definitely
+            will.”).
+          </p> */}
+          {/* <p>
+            After entering your response, we will take the outcome that you
+            think it’s most likely (e.g. <strong>“YES”</strong> it will rain) and compare it to the
+            actual outcome that we obtain by fast-forwarding time in this
+            fictional world (e.g. <strong>“YES”</strong> It’s raining!).
+          </p> */}
+          {/* <p>
             <img
-              src="/experiment/slider.png"
+              src="/experiment/feedback.png"
               alt="Example tweets"
               width="400"
             />
           </p>
-          <p>Rules:</p>
-          <ul>
-            <li>If you are unsure, please bring the slider closer to middle (50-50).</li>
-            <li>If you are confident that the event WILL happen, bring the slider to 100%.</li>
-            <li>If you are confident that the event will NOT happen, bring the slider to 0%.</li>
-            <li>Responding 50-50 is not allowed.</li>
-          </ul>
           <p>
-          <u>Please sincerely express your confidence.</u> We will give an extra bonus to the most calibrated Agent. 
-          Calibration means that you were neither overconfident or underconfident, but just right!
-          </p>
-          {/* <p>
-            Please try to be both <strong>accurate</strong> and{" "}
-            <strong>calibrated</strong>:
-            <ul>
-              <li>
-                <strong>Accurate</strong> means that the outcome you think most
-                likely (even by a small margin) should always agree with the
-                final true outcome .
-              </li>
-              <li>
-                <strong>Calibrated</strong> means that you should not be
-                overconfident or underconfident. Please just sincerely express
-                your true confidence.
-              </li>
-            </ul>
-          </p>
-          {treatment.reward === "group" ? (
-            <>
-              <p>
-                One more thing! You will do this task together with other fellow
-                Turkers as a GROUP.
-              </p>
-
-              <ul>
-                <li>
-                  For every question that YOUR GROUP answers{" "}
-                  <strong>accurately</strong> you will receive a token. Tokens
-                  will be converted into a monetary bonus at the end of the
-                  experiment. The group decision is simply the majority of your
-                  group’s votes.
-                </li>
-                <li>
-                  We will also reward the most <strong>calibrated</strong>{" "}
-                  worker in your group with one extra dollar at the end of the
-                  experiment. So please don’t be neither overconfident or
-                  underconfident.
-                </li>
-              </ul>
-            </>
-          ) : (
-            <>
-              <p>
-                One more thing! You will do this task together with other fellow
-                Turkers.
-              </p>
-
-              <ul>
-                <li>
-                  However you will be rewarded for your individual performance
-                  only. For every question that YOU individually answer{" "}
-                  <strong>accurately</strong> you will receive a token. Tokens
-                  will be converted into a monetary bonus at the end of the
-                  experiment.
-                </li>
-                <li>
-                  We will also reward the most <strong>calibrated</strong>{" "}
-                  worker in your group with one extra dollar at the end of the
-                  experiment. So please don’t be neither overconfident or
-                  underconfident.
-                </li>
-                <li>
-                  Keep an eye on the <strong>score counter</strong> on the lefthand side to know how many tokens you have accumulated.
-                </li>
-              </ul>
-            </>
-          )} */}
-          
-          <button
-            type="button"
-            className="pt-button pt-intent-nope pt-icon-double-chevron-left"
-            onClick={onPrev}
-            disabled={!hasPrev}
-          >
-            Previous
-          </button>{" "}
-          <button
-            type="button"
-            className="pt-button pt-intent-primary"
-            onClick={onNext}
-            disabled={!hasNext}
-          >
-            Next
-            <span className="pt-icon-standard pt-icon-double-chevron-right pt-align-right" />
-          </button>
+            <strong>USE THE FEEDBACK TO LEARN HOW TO MAXIMIZE YOUR SCORE</strong>
+          </p> */}
+            <button
+                type="button"
+                className="pt-button pt-intent-nope pt-icon-double-chevron-left"
+                onClick={onPrev}
+                disabled={!hasPrev}
+            >
+                Previous
+            </button>{" "}
+            <button
+                type="button"
+                className="pt-button pt-intent-primary"
+                onClick={onNext}
+                disabled={!hasNext}
+            >
+                Next
+                <span className="pt-icon-standard pt-icon-double-chevron-right pt-align-right" />
+            </button>
         </div>
       </Centered>
     );
