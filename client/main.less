@@ -1,21 +1,285 @@
-@import "{}/imports/core/ui/stylesheets/variables.less";
+@import "tweet.less";
 
-@import "{}/imports/core/ui/stylesheets/base.less";
-// @import "{}/imports/core/ui/stylesheets/form.less";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700");
+.grid {
+  font-family: "Open Sans", sans-serif;
+}
 
-@import "{}/imports/core/ui/stylesheets/admin.less";
-@import "{}/imports/core/ui/stylesheets/core.less";
+.consent {
+  button {
+    width: 16rem;
+  }
+}
 
-@import "{}/imports/core/ui/components/Breadcrumb.less";
-@import "{}/imports/core/ui/components/Centered.less";
-@import "{}/imports/core/ui/components/DelayedDisplay.less";
-@import "{}/imports/core/ui/components/Game.less";
-@import "{}/imports/core/ui/components/GameLobby.less";
-@import "{}/imports/core/ui/components/HelpTooltip.less";
-@import "{}/imports/core/ui/components/Loading.less";
-@import "{}/imports/core/ui/components/Login.less";
-@import "{}/imports/core/ui/components/NewPlayer.less";
-@import "{}/imports/core/ui/components/NoBatch.less";
+.exit-survey {
+  .form-line {
+    display: flex;
 
-// Load game style sheets
-@import "{}/imports/experiment/client/style.less";
+    .pt-form-group {
+      margin-right: 30px;
+
+      textarea {
+        min-height: 90px;
+      }
+    }
+
+    &.thirds {
+      .pt-form-group {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 30%;
+
+        .pt-label {
+          min-height: 36px;
+        }
+      }
+    }
+  }
+}
+
+.player-profile {
+  display: flex;
+  flex-direction: column;
+  // width: 24rem;
+  // background-color: #f5f5f5;
+  // min-height: 100%;
+  align-items: center;
+  padding: 4rem;
+
+  .profile-avatar {
+    width: 8rem;
+    height: 8rem;
+    margin: 3rem 0;
+  }
+
+  .profile-score {
+    text-align: center;
+    span {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.round {
+  font-stretch: ultra-expanded;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .content {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .progress-bar {
+    position: relative;
+    height: 20px;
+    width: 350px;
+    border-radius: 50px;
+    border: 1px solid #333;
+  }
+  
+  .filler {
+    background: #1DA598;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .2s ease-in;
+  }
+}
+
+.social-exposure {
+  margin: 1rem;
+
+  .alter {
+    // TODO remove "css grid", no necessary here
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-areas: "img range";
+    padding-right: 3rem;
+
+    img {
+      grid-area: img;
+      width: 6rem;
+      height: 6rem;
+    }
+    .range {
+      grid-area: range;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .empty {
+      .pt-slider-handle {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+.task {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3rem;
+  overflow: auto;
+
+  .form {
+    margin: 0 auto;
+    padding: 100px 30px 0;
+
+    @media (min-width: 800px) {
+      max-width: 60%;
+    }
+  }
+
+  .input-range {
+    margin-bottom: 160px;
+  }
+
+  .task-stimulus {
+    max-width: 100rem;
+
+    h1 {
+      text-align: center;
+      line-height: 1.2em;
+    }
+    h2 {
+      text-align: center;
+    }
+    .tweets {
+      display: flex;
+    }
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 40px;
+    }
+
+    /* Clear floats after image containers */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
+    }
+    .text {
+      padding-top: 55px;
+      padding-bottom: 50px;
+      font-size: 22px;
+    }
+  }
+
+  .task-response {
+    width: 50rem;
+    margin: 3rem 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    form {
+      width: 40rem;
+    }
+
+    .empty {
+      .pt-slider-handle {
+        visibility: hidden;
+      }
+    }
+    
+    .sliderTags {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .sliderTagYes {
+      text-align: right;
+      transform: translate(50px);
+    }
+    .sliderTagNo {
+      transform: translate(-50px);
+    }
+  }
+
+  .task-feedback {
+    margin: 2rem 0 0;
+    table {
+      font-size: 4rem;
+      font-weight: normal;
+
+      th {
+        text-align: left;
+        padding-right: 4rem;
+        font-weight: 300;
+      }
+    }
+    .correctAns{
+      font-weight:bold; 
+      color: rgb(23, 247, 23);
+    }
+    .incorrectAns{
+      font-weight:bold;
+      color: red;
+    }
+    .textBold{
+      font-weight:bold; 
+    }
+    img.imgChoice{
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+.timer {
+  margin-top: 2rem;
+  text-align: center;
+
+  .seconds {
+    font-size: 3rem;
+    font-family: Helvetica, Arial, sans-serif;
+    color: green;
+  }
+  &.lessThan10 {
+    .seconds {
+      color: orange;
+    }
+  }
+  &.lessThan5 {
+    .seconds {
+      color: red;
+    }
+  }
+}
+
+.debug {
+  margin: 1rem !important;
+  font-size: 1.6rem;
+  color: palevioletred;
+  background-color: pink;
+  padding: 1rem !important;
+
+  &.center {
+    text-align: center;
+  }
+
+  &::before {
+    display: block;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1rem;
+    content: "DEBUG";
+  }
+}
