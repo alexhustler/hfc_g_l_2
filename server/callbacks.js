@@ -34,6 +34,9 @@ Empirica.onStageEnd((game, round, stage, players) => {
 
     // If no response given, ignore rewarding, always wrong.
     if (!value && value !== 0) {
+      const prevScore = player.get("score");
+      player.round.set("score", prevScore);
+      player.round.set("rewarded", false);
       return;
     }
     numVotes++;
