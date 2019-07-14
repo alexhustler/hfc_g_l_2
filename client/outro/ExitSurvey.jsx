@@ -17,7 +17,7 @@ const Radio = ({ selected, name, value, label, onChange }) => (
 
 export default class ExitSurvey extends React.Component {
   static stepName = "ExitSurvey";
-  state = { age: "", gender: "", strength: "", fair: "", feedback: "" };
+  state = { age: "", gender: "", accurate: "", howManyPlayers: "", whichQue: "", feedback: "" };
 
   handleChange = event => {
     const el = event.currentTarget;
@@ -31,7 +31,7 @@ export default class ExitSurvey extends React.Component {
 
   render() {
     const { player } = this.props;
-    const { age, gender, strength, fair, feedback, education } = this.state;
+    const { age, gender, accurate, howManyPlayers, whichQue, feedback, education } = this.state;
 
     return (
       <Centered>
@@ -84,9 +84,9 @@ export default class ExitSurvey extends React.Component {
               </div>
             </div>
 
-            <div>
-              <label>Highest Education Qualification</label>
-              <div>
+            <div style={{marginTop: "20px"}}>
+              <label>Highest Education Qualification:</label>
+              <div style={{marginTop: "10px"}}>
                 <Radio
                   selected={education}
                   name="education"
@@ -118,33 +118,53 @@ export default class ExitSurvey extends React.Component {
               </div>
             </div>
 
-            <div className="form-line thirds">
+            <div className="form-line" style={{marginTop: "20px"}}>
               <div>
-                <label htmlFor="strength">
-                  How would you describe your strength in the game?
+                <label htmlFor="accurate">
+                  Which cue was more accurate?
                 </label>
                 <div>
                   <textarea
                     dir="auto"
-                    id="strength"
-                    name="strength"
-                    value={strength}
+                    id="accurate"
+                    name="accurate"
+                    value={accurate}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
+            </div>
+            <div className="form-line" style={{marginTop: "20px"}}>
               <div>
-                <label htmlFor="fair">Do you feel the pay was fair?</label>
+                <label htmlFor="whichQue">Which cue did you use the most?</label>
                 <div>
                   <textarea
                     dir="auto"
-                    id="fair"
-                    name="fair"
-                    value={fair}
+                    id="whichQue"
+                    name="whichQue"
+                    value={whichQue}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
+            </div>
+            <div className="form-line" style={{marginTop: "20px"}}>
+              <div>
+                <label htmlFor="howManyPlayers">
+                  How many players do you think you were working with?
+                </label>
+                <div>
+                  <textarea
+                    dir="auto"
+                    id="howManyPlayers"
+                    name="howManyPlayers"
+                    value={howManyPlayers}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-line" style={{marginTop: "20px"}}>
               <div>
                 <label htmlFor="feedback">
                   Feedback, including problems you encountered.

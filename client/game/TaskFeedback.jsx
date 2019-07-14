@@ -9,8 +9,8 @@ export default class TaskFeedback extends React.Component {
     }
 
     const isIndividualReward = game.treatment["reward"] === "individual";
-    const ifp = round.get("ifp");
-    let groupDesicion = false;
+    const isCorrectAnswer = (isIndividualReward && player.round.get("correct"))
+      || (!isIndividualReward && round.get("isGroupCorrect"));
 
     return (
       <div className="task-feedback">
@@ -23,24 +23,21 @@ export default class TaskFeedback extends React.Component {
               </td>
             </tr>
             <tr>
-              <th>{player.round.get("playersNumber") == 1 ? "You" : "Your group"} predicted: </th>
+              <th>{isIndividualReward ? "You" : "Your group"} predicted: </th>
               <td className="textBold">
-                {player.round.get("groupVoteEmpty")
-                  ? "-" // No response given
-                  : player.round.get("yesGroup")
-                    ? "Yes"
-                    : "No"}
-                {player.round.get("groupVoteEmpty")
-                  ? groupDesicion = !ifp.willHappen // No response given
-                  : player.round.get("yesGroup")
-                    ? groupDesicion = true
-                    : groupDesicion = false}
+                {
+                  isIndividualReward
+                    ? player.round.get("yesOrNo") || "-"
+                    : round.get("numVotes") === 0
+                      ? "-"
+                      : round.get("groupYesOrNo")
+                }
               </td>
             </tr>
             <tr>
               <th>{isIndividualReward ? "You were: " : "Your group was: "} </th>
-              <td className={(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correctAns" : "incorrectAns"}
-              >{(ifp.willHappen && groupDesicion) || (!ifp.willHappen && !groupDesicion) ? "correct" : "incorrect"}</td>
+              <td className={isCorrectAnswer ? "correctAns" : "incorrectAns"}
+              >{isCorrectAnswer ? "correct" : "incorrect"}</td>
             </tr>
           </tbody>
         </table>

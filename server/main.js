@@ -1,4 +1,3 @@
-import moment from "moment";
 import Empirica from "meteor/empirica:core";
 import { Random } from 'meteor/random'
 
@@ -7,13 +6,21 @@ import "./bots.js";
 
 import {
   data,
-  globalInaccurateCount,
-  localInaccurateCount,
-  roundCount,
-  willHappenCount
 } from "./constants.js";
 
 Empirica.gameInit((game, treatment, players) => {
+  const { roundCount } = treatment;
+  const willHappenCount = Math.round(0.5 * roundCount);
+  // global cue has 75% accuracy
+  const globalCueAccuracy = 0.75;
+  const localCueAccuracy = 0.65;
+  const globalInaccurateCount = Math.round((1 - globalCueAccuracy) * roundCount);
+  // local cue has 70% accuracy
+  const localInaccurateCount = Math.round((1 - localCueAccuracy) * roundCount);
+
+  game.set("globalCueAccuracy", globalCueAccuracy);
+  game.set("localCueAccuracy", localCueAccuracy);
+
   // Deep clone and shuffle
   const clonedifps = JSON.parse(JSON.stringify(data.ifps));
   const ifps = _.shuffle(clonedifps).slice(0, roundCount);
@@ -44,40 +51,15 @@ Empirica.gameInit((game, treatment, players) => {
 
   ifps.forEach((ifp, i) => {
     ifp.willHappen = willHappenIndices.includes(i);
+    // When the global is accurate it is accurate for everyone.
+    // For local, each individual player can have different values.
     ifp.globalAccurate = !globalInaccurates.includes(i);
-
-    const days = Math.round(Math.random() * 3 + 20);
-    const hours = Math.round(Math.random() * 4);
-    const addSubtract = Random.choice(["add", "subtract"]);
-    const period = moment()
-      .subtract(days, "days")
-      [addSubtract](hours, "hours");
-    const applyRandomVals = cue => {
-      const minutes = Math.random() * 120;
-      const addSub = Random.choice(["add", "subtract"]);
-      cue.datetime = period[addSub](minutes, "minutes").toDate();
-      cue.likes = Math.round(Math.random() * 8000) + 30000;
-      cue.rts = Math.round(Math.random() * 3000) + 3000;
-    };
-    ifp.pro.forEach(applyRandomVals);
-    ifp.against.forEach(applyRandomVals);
-
-    // Leave random text for global cue
-    ifp.chosen = {
-      pro: Random.choice(ifp.pro),
-      against: Random.choice(ifp.against)
-    };
   });
 
   _.times(roundCount, i => {
     const round = game.addRound();
     round.set("ifp", ifps[i]);
     const stages = [
-      // {
-      //   name: "advice",
-      //   displayName: "Advice",
-      //   durationInSeconds: 5
-      // },
       {
         name: "response",
         displayName: "Response",
@@ -88,11 +70,6 @@ Empirica.gameInit((game, treatment, players) => {
         displayName: "Feedback",
         durationInSeconds: 5
       },
-      // {
-      //   name: "question",
-      //   displayName: "Question",
-      //   durationInSeconds: 10
-      // }
     ];
     round.addStage(stages[0]);
     round.addStage(stages[1]);
@@ -120,33 +97,6 @@ Empirica.gameInit((game, treatment, players) => {
     player.set("globalSource", globalSource);
     player.set("localSource", localSource);
 
-    // "For each player and each IFP: randomly allocate 1 pro signal and 1
-    // against signal to X and 1 pro signal and 1 against signal to Y. We will
-    // present only one signal per source." NOTE(np) This part does not make
-    // sense to me. NOTE(np again) I made the global choice of cue global, so
-    // could simplify this area, not worrying for now until sure.
-    const roundSignals = [];
-    _.times(roundCount, i => {
-      const ifp = ifps[i];
-      const global = {};
-      const local = {};
-
-      const globalPro = Random.choice(ifp.pro);
-      global.pro = ifp.pro.indexOf(globalPro);
-      const remainingPro = _.without(ifp.pro, globalPro);
-      // const remainingPro = _.without(ifp.pro, ifp.chosen.pro);
-      local.pro = ifp.pro.indexOf(Random.choice(remainingPro));
-
-      const globalAgainst = Random.choice(ifp.against);
-      global.against = ifp.against.indexOf(globalAgainst);
-      const remainingAgainst = _.without(ifp.against, globalAgainst);
-      // const remainingAgainst = _.without(ifp.against, ifp.chosen.against);
-      local.against = ifp.against.indexOf(Random.choice(remainingAgainst));
-
-      roundSignals.push({ global, local });
-    });
-    player.set("roundSignals", roundSignals);
-
     // Assigning random sides (we randomly assign left, right inferred)
     const roundLeftSide = [];
     _.times(roundCount, i => {
@@ -164,14 +114,3 @@ Empirica.gameInit((game, treatment, players) => {
     player.set("roundLocalAccurate", roundLocalAccurate);
   });
 });
-
-// const fakePlayer = (player = {}) => {
-//   player.data = player.data || {};
-//   player.set = (key, value) => (player.data[key] = value);
-//   return player;
-// };
-
-// console.log(
-//   "results",
-//   JSON.stringify(init({}, [fakePlayer(), fakePlayer()]), null, "  ")
-// );

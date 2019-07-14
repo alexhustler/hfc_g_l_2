@@ -1,16 +1,16 @@
 import React from "react";
-import moment from "moment";
 
 import Tweet from "./Tweet.jsx";
 
 export default class TaskStimulus extends React.Component {
 
   handleRightButtonClick = (imgHandle) => {
-    const { stage, hideImage, round } = this.props;
+    const { stage, hideImage, round, player } = this.props;
     if(stage.name === "feedback")
     {
       return null;
     }
+    player.round.set("sideSelected", "right");
     const handleRight = {
       side: "right",
       showLeft: false,
@@ -23,11 +23,12 @@ export default class TaskStimulus extends React.Component {
   }
 
   handleLeftButtonClick = (imgHandle) => {
-    const { stage, hideImage, round } = this.props;
+    const { stage, hideImage, round, player } = this.props;
     if(stage.name === "feedback")
     {
       return null;
     }
+    player.round.set("sideSelected", "left");
     const handleLeft = {
       side: "left",
       showRight: false,
@@ -40,75 +41,56 @@ export default class TaskStimulus extends React.Component {
   }
 
   render() {
-    const { round, stage, player, showLeftAdvice, showRightAdvice, showLeft, showRight, showQuestion } = this.props;
+    const { round, player, showLeftAdvice, showRightAdvice, showLeft, showRight, showQuestion } = this.props;
 
     const ifp = round.get("ifp");
 
     const globalSource = player.get("globalSource");
     const localSource = player.get("localSource");
-    const roundSignals = player.get("roundSignals")[round.index];
     const roundLeftSide = player.get("roundLeftSide")[round.index];
     const roundLocalAccurate = player.get("roundLocalAccurate")[round.index];
 
-    let globalCueSignal;
+    const yesCue = "yes";
+    const noCue = "no";
+    let globalCue;
     if (ifp.globalAccurate) {
-      globalCueSignal = ifp.willHappen ? "pro" : "against";
+      globalCue = ifp.willHappen ? yesCue : noCue;
     } else {
-      globalCueSignal = !ifp.willHappen ? "pro" : "against";
+      globalCue = !ifp.willHappen ? yesCue : noCue;
     }
-    // const globalCue = ifp.chosen[globalCueSignal];
-    // console.log({globalCueSignal}, {roundSignals});
-    
-    const globalCue =
-      ifp[globalCueSignal][roundSignals.global[globalCueSignal]];
 
-    let localCueSignal;
+    let localCue;
     if (roundLocalAccurate) {
-      localCueSignal = ifp.willHappen ? "pro" : "against";
+      localCue = ifp.willHappen ? yesCue : noCue;
     } else {
-      localCueSignal = !ifp.willHappen ? "pro" : "against";
+      localCue = !ifp.willHappen ? yesCue : noCue;
     }
-    const localCue = ifp[localCueSignal][roundSignals.local[localCueSignal]];
+
+    player.round.set('cueAgreement', roundLocalAccurate === ifp.globalAccurate);
 
     const global = (
       <Tweet
         handle={`@${globalSource.handle}`}
         author={globalSource.name}
-        text={globalCue.text}
-        // timestamp={moment(globalCue.datetime)}
-        // likes={globalCue.likes}
-        rts={globalCue.rts}
+        text={globalCue}
         isGlobal
-        cueSignal={globalCueSignal}
       />
     );
     const local = (
       <Tweet
         handle={`@${localSource.handle}`}
         author={localSource.name}
-        text={localCue.text}
-        // timestamp={moment(globalCue.datetime)}
-        // likes={globalCue.likes}
-        rts={globalCue.rts}
-        cueSignal={localCueSignal}
+        text={localCue}
+        bump={true}
       />
     );
 
     const left = roundLeftSide === "global" ? global : local;
     const right = roundLeftSide === "global" ? local : global;
 
-    // const isDebug = Meteor.isDevelopment;
-
     return (
       <div className="task-stimulus">
         <h1>{ifp.question}</h1>
-
-        {/* {isDebug ? (
-          <p className="debug center">
-            Outcome: {ifp.willHappen ? "Yes" : "No"}
-          </p>
-        ) : null} */}
-
         {
           showQuestion &&
           <div>

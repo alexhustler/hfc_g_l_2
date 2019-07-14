@@ -512,8 +512,8 @@ const resources = {
     ]
 };
 
-function generateIfp(country1, country2, country3, 
-  country4, person1, person2, party1, party2, 
+function generateIfp(country1, country2, country3,
+  country4, person1, person2, party1, party2,
   virus1, group1, region1, agency1, agency2, city1, index) {
     let genericIfps = [
       {
@@ -985,31 +985,11 @@ for (let i = 0; i < (genericIfps.length * 3); i++) {
   agency2 = agencies[1];
   city1 = cities[0];
 
-  let clonedifp = { question : generateIfp(country1, country2, country3, 
-    country4, person1, person2, party1, party2, 
-    virus1, group1, region1, agency1, agency2, city1, i % genericIfps.length),
-    pro: [
-      {
-        text:
-          "YES"
-      },
-      {
-        text:
-          "NO"
-      }
-    ],
-    against: [
-      {
-        text:
-          "YES"
-      },
-      {
-        text:
-          "NO"
-      }
-    ]
+  let clonedifp = { question : generateIfp(country1, country2, country3,
+    country4, person1, person2, party1, party2,
+    virus1, group1, region1, agency1, agency2, city1, i % genericIfps.length)
   };
-  
+
   _ifps.push(clonedifp);
 }
 export const generatedIfps = _ifps;

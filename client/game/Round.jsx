@@ -7,7 +7,7 @@ export default class Round extends React.Component {
   state = { percentage: this.props.round.index / (this.props.player.get("roundsCount") / 100) }
   render() {
     const { round, stage, player, game } = this.props;
-    
+
     const Filler = (props) => {
       return <div className="filler" style={{ width: `${props.percentage}%` }}/>
     }

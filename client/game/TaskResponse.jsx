@@ -39,7 +39,6 @@ export default class TaskResponse extends React.Component {
           <div className="sliderTagNo">
             <div>"Definitely NO"</div>
           </div>
-          <div>"UNSURE"</div>
           <div className="sliderTagYes">
             <div>"Definitely YES"</div>
           </div>
