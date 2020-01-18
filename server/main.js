@@ -12,8 +12,8 @@ Empirica.gameInit((game, treatment, players) => {
   const { roundCount } = treatment;
   const willHappenCount = Math.round(0.5 * roundCount);
   // global cue has 75% accuracy
-  const globalCueAccuracy = 0.75;
-  const localCueAccuracy = 0.65;
+  const globalCueAccuracy = 0.70;
+  const localCueAccuracy = 0.70;
   const globalInaccurateCount = Math.round((1 - globalCueAccuracy) * roundCount);
   // local cue has 70% accuracy
   const localInaccurateCount = Math.round((1 - localCueAccuracy) * roundCount);

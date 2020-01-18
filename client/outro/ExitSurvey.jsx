@@ -38,17 +38,18 @@ export default class ExitSurvey extends React.Component {
         <div className="exit-survey">
           <h1> Exit Survey </h1>
           <p>
-            Please submit the following code to receive your bonus:{" "}
-            <strong>{player._id}</strong>.
+            Thank you for your time! Before you submit your responses to the below questionnaire,
+            please click on this link to confirm to Prolific that you completed the study: &nbsp;
+            <a href="https://app.prolific.co/submissions/complete?cc=1F68B996" target="_blank">
+              https://app.prolific.co/submissions/complete?cc=1F68B996
+            </a>.
           </p>
           <p>
-            You final <strong>bonus</strong> is in addition of the{" "}
-            <strong>1 base reward</strong> for completing the HIT.
+            If the link does not work, please use the following code when completing your submission: <b>1F68B996</b>.
           </p>
           <br />
           <p>
-            Please answer the following short survey. You do not have to provide
-            any information you feel uncomfortable with.
+            Before you leave please answer the following questions for us.
           </p>
           <form onSubmit={this.handleSubmit}>
             <div className="form-line">
