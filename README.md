@@ -4,7 +4,7 @@ _This project was generated with [create-empirica-app](https://github.com/empiri
 
 ## deploying to prod
 
-`DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json hfc-global-vs-local.meteorapp.com`
+DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json hgvl-2.meteorapp.com
 
 ## Factors
 - playerCount
