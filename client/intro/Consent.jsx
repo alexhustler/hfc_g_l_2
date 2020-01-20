@@ -21,8 +21,7 @@ export default class Consent extends React.Component {
           going beyond this particular study.
           </p>
           <p>
-          You will receive £8 through Prolific for participating.
-          In addition, you may earn a £10 or a £5 bonus depending on your performance.
+          You will be compensated based on the score you achieve.
           You may exit the study at any time before the end and will receive partial
           compensation. By clicking on the ‘AGREE’ button, you confirm that you are at
           least 18 years of age and agree to participate voluntarily.

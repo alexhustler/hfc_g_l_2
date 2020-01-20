@@ -19,7 +19,7 @@ export default class InstructionStepFive extends React.Component {
                 />
             </p>
             <p> If your prediction is correct, collect your reward! </p>
-            
+
             </>
           ) : (
             <>
@@ -31,18 +31,10 @@ export default class InstructionStepFive extends React.Component {
               />
             </p>
             <p> If your team’s collective prediction is correct, collect your reward! </p>
-            
+
             </>
           )}
-          {/* <p>At the end of each forecast, we will give you three pieces of feedback:</p>
-          <ul>
-            <li>The agency that you selected.</li>
-            <li>Your forecast [Yes/No].</li>
-            <li>Your team’s most popular forecast [Yes/No].</li>
-            <li>Your individual forecast accuracy [Correct/Incorrect].</li>
-          </ul>
-          <p>Use the feedback to make better forecasts!</p> */}
-          <p>Notice that you will express your personal prediction, but your reward will depend on the team collective prediction, 
+          <p>Notice that you will express your personal prediction, but your reward will depend on the team collective prediction,
               which will be made by majority rule and may be different from your own prediction.</p>
           <p>Ready? Landing has started. Good luck!</p>
           <button

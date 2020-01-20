@@ -18,13 +18,13 @@ export default class InstructionStepOne extends React.Component {
           </p>
           <p>Welcome Special Agent!</p>
           <p>
-          And thank you for participating in this mission. In the following hour, 
-          you and your team will be transported to another planet, called Mecha-T. 
+          And thank you for participating in this mission. In the following hour,
+          you and your team will be transported to another planet, called Mecha-T.
           There, you will be asked to be neutral observers of the planet’s political situation.
           </p>
           <p>
-          We will ask you to forecast future Mecha-T’s geo-political events - like wars, 
-          elections and migrations - based on information collected from Mecha-T’s news agencies. 
+          We will ask you to forecast future Mecha-T’s geo-political events - like wars,
+          elections and migrations - based on information collected from Mecha-T’s news agencies.
           </p>
           <p>
             For each forecast:
@@ -33,7 +33,7 @@ export default class InstructionStepOne extends React.Component {
               <li>Read what the selected news has to say about the event in question.</li>
               <li>Rate on a scale from 0% to 100% the probability that the event will happen.</li>
               <li>Maximize your tokens (they will be converted into real money at the end).</li>
-            </ul> 
+            </ul>
           </p>
           <button
             type="button"
