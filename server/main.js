@@ -1,5 +1,5 @@
 import Empirica from "meteor/empirica:core";
-import { Random } from 'meteor/random'
+import { Random } from 'meteor/random';
 
 import "./callbacks.js";
 import "./bots.js";

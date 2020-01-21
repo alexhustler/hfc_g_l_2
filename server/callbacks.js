@@ -1,4 +1,5 @@
 import Empirica from "meteor/empirica:core";
+import { Random } from 'meteor/random';
 
 // onGameStart is triggered opnce per game before the game starts, and before
 // the first onRoundStart. It receives the game and list of all the players in
